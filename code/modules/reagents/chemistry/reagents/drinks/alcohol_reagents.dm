@@ -748,6 +748,25 @@
 	quality = DRINK_GOOD
 	metabolization_rate = 1.25 * REAGENTS_METABOLISM
 	taste_description = "JUSTICE"
+
+/datum/reagent/consumable/ethanol/the_lawsuit
+	name = "The Lawsuit"
+	description = "A dangerously strong cocktail that'll have you signing settlements by morning. Lawyers recommend against it."
+	color = "#8B0000" // rgb: 139, 0, 0 (dark red)
+	boozepwr = 85
+	quality = DRINK_GOOD
+	taste_description = "regrettable decisions and expensive legal fees"
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	glass_price = DRINK_PRICE_HIGH
+
+/datum/reagent/consumable/ethanol/the_lawsuit/on_mob_life(mob/living/carbon/drinker, seconds_per_tick, metabolization_ratio)
+	. = ..()
+	if(SPT_PROB(5, seconds_per_tick))
+		to_chat(drinker, span_warning("[pick("You feel like you should call a lawyer.", "Your judgment seems... impaired.", "This was probably a bad idea.", "You're definitely going to regret this.", "You feel legally liable for something.")]"))
+	if(SPT_PROB(3, seconds_per_tick))
+		drinker.adjust_slurring(2 SECONDS)
+
+/datum/reagent/consumable/ethanol/beepsky_smash
 	overdose_threshold = 40
 	ph = 2
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED

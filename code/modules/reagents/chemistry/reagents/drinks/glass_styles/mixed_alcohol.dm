@@ -104,6 +104,13 @@
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "beepskysmashglass"
 
+/datum/glass_style/drinking_glass/the_lawsuit
+	required_drink_type = /datum/reagent/consumable/ethanol/the_lawsuit
+	name = "The Lawsuit"
+	desc = "A drink so strong it should come with a liability waiver. Your lawyer called, they're not covering this."
+	icon = 'icons/obj/drinks/mixed_drinks.dmi'
+	icon_state = "lawsuit"
+
 /datum/glass_style/drinking_glass/irish_cream
 	required_drink_type = /datum/reagent/consumable/ethanol/irish_cream
 	name = "Irish Cream"
