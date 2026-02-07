@@ -273,6 +273,23 @@
 	)
 	crate_name = "pharmaceutical samples crate"
 
+/datum/supply_pack/imports/bootleg_weapons
+	name = "Self Defense Supplies"
+	desc = "Look, we all know station security can't be everywhere at once. This crate contains some 'self defense' items \
+		for the discerning crew member. Includes a couple of switchblades, some brass knuckles, a baseball bat, \
+		and a suspicious looking balaclava. Totally for self defense, we promise."
+	order_flags = ORDER_CONTRABAND
+	cost = CARGO_CRATE_VALUE * 6
+	contains = list(
+		/obj/item/switchblade = 2,
+		/obj/item/clothing/gloves/tackler/combat,
+		/obj/item/melee/baseball_bat,
+		/obj/item/clothing/mask/balaclava,
+		/obj/item/clothing/neck/scarf/black,
+		/obj/item/storage/box/syndie_kit/throwing_weapons,
+	)
+	crate_name = "self defense crate"
+
 /datum/supply_pack/imports/vehicle
 	name = "Biker Gang Kit" //TUNNEL SNAKES OWN THIS TOWN
 	desc = "TUNNEL SNAKES OWN THIS TOWN. Contains an unbranded All Terrain Vehicle, and a \
