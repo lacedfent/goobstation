@@ -22,6 +22,7 @@
 	RegisterSignal(user, COMSIG_CARBON_LOSE_ORGAN, PROC_REF(eye_removed))
 	if(!isnull(ling_eyes))
 		ling_eyes.flash_protect = FLASH_PROTECTION_WELDER //Adjust the user's eyes' flash protection
+		ling_eyes.penlight_message = "have an unsettling reflective sheen, with pupils that seem to shift and writhe"
 		to_chat(user, span_changeling("We adjust our eyes to protect them from bright lights."))
 
 /datum/action/changeling/augmented_eyesight/sting_action(mob/living/carbon/user)
@@ -54,6 +55,7 @@
 	var/obj/item/organ/eyes/ling_eyes = user.get_organ_slot(ORGAN_SLOT_EYES)
 	if(!isnull(ling_eyes))
 		ling_eyes.flash_protect = initial(ling_eyes.flash_protect)
+		ling_eyes.penlight_message = initial(ling_eyes.penlight_message)
 
 	REMOVE_TRAIT(user, TRAIT_XRAY_VISION, REF(src))
 	user.update_sight()
@@ -68,6 +70,7 @@
 	var/obj/item/organ/eyes/ling_eyes = gained
 	if(!istype(ling_eyes))
 		return
+	ling_eyes.penlight_message = "have an unsettling reflective sheen, with pupils that seem to shift and writhe"
 	if(active)
 		ling_eyes.flash_protect = max(ling_eyes.flash_protect += -3, FLASH_PROTECTION_HYPER_SENSITIVE)
 	else
@@ -81,4 +84,5 @@
 	if(!istype(ling_eyes))
 		return
 	ling_eyes.flash_protect = initial(ling_eyes.flash_protect)
+	ling_eyes.penlight_message = initial(ling_eyes.penlight_message)
 	// We don't need to bother about removing or adding x-ray vision, fortunately, because they can't see anyways
