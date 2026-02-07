@@ -256,6 +256,23 @@
 	cost = CARGO_CRATE_VALUE * 6
 	contains = list(/obj/item/gun/ballistic/rifle/boltaction = 6)
 
+/datum/supply_pack/imports/suspicious_pills
+	name = "Pharmaceutical Samples Crate"
+	desc = "Hey buddy, got some 'experimental medication' here. Totally legal, definitely not stolen from a research facility. \
+		Contains various pills and patches. Side effects may include: everything. Don't ask questions."
+	order_flags = ORDER_CONTRABAND
+	cost = CARGO_CRATE_VALUE * 5
+	contains = list(
+		/obj/item/storage/pill_bottle/happy,
+		/obj/item/storage/pill_bottle/lsd,
+		/obj/item/storage/pill_bottle/aranesp,
+		/obj/item/storage/pill_bottle/stimulant,
+		/obj/item/storage/pill_bottle/zoom,
+		/obj/item/reagent_containers/syringe/contraband/space_drugs,
+		/obj/item/reagent_containers/syringe/contraband/krokodil,
+	)
+	crate_name = "pharmaceutical samples crate"
+
 /datum/supply_pack/imports/vehicle
 	name = "Biker Gang Kit" //TUNNEL SNAKES OWN THIS TOWN
 	desc = "TUNNEL SNAKES OWN THIS TOWN. Contains an unbranded All Terrain Vehicle, and a \
