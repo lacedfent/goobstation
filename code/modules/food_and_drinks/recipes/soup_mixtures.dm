@@ -2251,3 +2251,97 @@
 	resulting_food_path = /obj/item/food/volt_fish
 	ingredient_reagent_multiplier = 0
 	mix_message = "The air fills with a hellish mix of fish and artificial flavouring."
+
+// Slop
+// A disgusting grey sludge that barely qualifies as food
+/datum/reagent/consumable/nutriment/soup/slop
+	name = "Slop"
+	description = "A grey, unappetizing sludge. It's technically edible."
+	data = list("disappointment" = 1, "grey mush" = 1, "regret" = 1)
+	color = "#a77f4eff"
+	glass_price = FOOD_PRICE_TRASH
+
+/datum/glass_style/has_foodtype/soup/slop
+	required_drink_type = /datum/reagent/consumable/nutriment/soup/slop
+	name = "bowl of slop"
+	desc = "It looks absolutely disgusting."
+	icon_state = "slop"
+	drink_type = GROSS
+
+/obj/item/reagent_containers/cup/bowl/soup/slop
+	initial_reagent = /datum/reagent/consumable/nutriment/soup/slop
+
+/datum/chemical_reaction/food/soup/slop
+	required_reagents = list(/datum/reagent/water = 50)
+	required_ingredients = list(
+		/obj/item/food/deadmouse = 1,
+		/obj/item/food/meat/slab/human/mutant/zombie = 1,
+	)
+	results = list(
+		/datum/reagent/consumable/nutriment/soup/slop = 30,
+		/datum/reagent/water = 10,
+	)
+	mix_message = "The pot bubbles with a grey, unappetizing sludge."
+
+// Pumpkin Soup
+/datum/reagent/consumable/nutriment/soup/pumpkin
+	name = "Pumpkin Soup"
+	description = "A creamy, autumn-inspired soup with a hint of sweetness."
+	data = list("pumpkin" = 1, "cream" = 1, "autumn spices" = 1)
+	glass_price = FOOD_PRICE_NORMAL
+	color = "#FF8C42"
+
+/datum/glass_style/has_foodtype/soup/pumpkin
+	required_drink_type = /datum/reagent/consumable/nutriment/soup/pumpkin
+	icon_state = "pumpkinsoup"
+	drink_type = VEGETABLES
+
+/obj/item/reagent_containers/cup/bowl/soup/pumpkin
+	initial_reagent = /datum/reagent/consumable/nutriment/soup/pumpkin
+
+/datum/chemical_reaction/food/soup/pumpkin
+	required_reagents = list(
+		/datum/reagent/water = 40,
+		/datum/reagent/consumable/cream = 10,
+	)
+	required_ingredients = list(
+		/obj/item/food/grown/pumpkin = 2,
+		/obj/item/food/grown/onion = 1,
+	)
+	results = list(
+		/datum/reagent/consumable/nutriment/soup/pumpkin = 30,
+		/datum/reagent/water = 10,
+	)
+	mix_message = "The pot fills with the warm, sweet aroma of pumpkin."
+
+// Seafood Chowder
+/datum/reagent/consumable/nutriment/soup/seafood_chowder
+	name = "Seafood Chowder"
+	description = "A thick, creamy soup loaded with chunks of fish and potatoes. A taste of the ocean."
+	data = list("fish" = 1, "cream" = 1, "potatoes" = 1, "the sea" = 1)
+	glass_price = FOOD_PRICE_NORMAL
+	color = "#F5E6D3"
+
+/datum/glass_style/has_foodtype/soup/seafood_chowder
+	required_drink_type = /datum/reagent/consumable/nutriment/soup/seafood_chowder
+	icon_state = "seafoodchowder"
+	drink_type = SEAFOOD | VEGETABLES | DAIRY
+
+/obj/item/reagent_containers/cup/bowl/soup/seafood_chowder
+	initial_reagent = /datum/reagent/consumable/nutriment/soup/seafood_chowder
+
+/datum/chemical_reaction/food/soup/seafood_chowder
+	required_reagents = list(
+		/datum/reagent/water = 30,
+		/datum/reagent/consumable/cream = 15,
+	)
+	required_ingredients = list(
+		/obj/item/food/fishmeat = 2,
+		/obj/item/food/grown/potato = 1,
+		/obj/item/food/grown/onion = 1,
+	)
+	results = list(
+		/datum/reagent/consumable/nutriment/soup/seafood_chowder = 35,
+		/datum/reagent/water = 8,
+	)
+	mix_message = "The pot fills with the rich aroma of the sea."

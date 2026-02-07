@@ -288,3 +288,13 @@
 	desc = "High-tech rope, a refined hook structure, the peak of climbing technology. Only useful for climbing up holes, provided the operation site has any."
 	item = /obj/item/climbing_hook/syndicate
 	cost = 1
+
+
+/datum/uplink_item/device_tools/holographic_decoy
+	name = "Holographic Decoy Projector"
+	desc = "A compact device that projects a holographic copy of yourself that walks in a chosen direction. \
+			Perfect for creating distractions, faking your escape route, or confusing pursuers. \
+			The decoy lasts for 15 seconds and passes through all objects and people. Comes with 3 charges."
+	item = /obj/item/holographic_decoy
+	cost = 3
+	surplus = 40
