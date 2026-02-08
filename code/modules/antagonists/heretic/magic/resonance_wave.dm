@@ -36,7 +36,7 @@
 		for(var/mob/living/victim in line_turf)
 			if(victim == owner)
 				continue
-			if(IS_HERETIC(victim) || IS_HERETIC_MONSTER(victim))
+			if(IS_HERETIC_OR_MONSTER(victim))
 				continue
 
 			victim.apply_damage(15, BRUTE)

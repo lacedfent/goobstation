@@ -23,7 +23,7 @@
 	for(var/mob/living/nearby_mob in range(aoe_radius, get_turf(cast_on)))
 		if(nearby_mob == cast_on)
 			continue
-		if(IS_HERETIC(nearby_mob) || IS_HERETIC_MONSTER(nearby_mob))
+		if(IS_HERETIC_OR_MONSTER(nearby_mob))
 			continue
 
 		var/distance = get_dist(nearby_mob, cast_on)

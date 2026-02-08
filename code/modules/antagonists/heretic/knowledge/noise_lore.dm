@@ -156,7 +156,10 @@
 
 /datum/heretic_knowledge/ultimate/noise_final/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
 	. = ..()
-	ADD_TRAIT(user, TRAIT_DEAF_IMMUNE, type)
+	// Grant immunity to ear damage and deafness
+	var/obj/item/organ/ears/our_ears = user.get_organ_slot(ORGAN_SLOT_EARS)
+	if(our_ears)
+		ADD_TRAIT(our_ears, TRAIT_BRAIN_TRAUMA_IMMUNITY, type)
 	ADD_TRAIT(user, TRAIT_SILENT_FOOTSTEPS, type)
 
 	var/datum/action/cooldown/spell/aoe/sonic_pulse/pulse = locate() in user.actions

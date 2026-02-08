@@ -40,7 +40,7 @@
 
 /obj/effect/temp_visual/silence_field/process(seconds_per_tick)
 	for(var/mob/living/victim in range(radius, src))
-		if(IS_HERETIC(victim) || IS_HERETIC_MONSTER(victim))
+		if(IS_HERETIC_OR_MONSTER(victim))
 			continue
 
 		victim.set_silence_if_lower(2 SECONDS)
