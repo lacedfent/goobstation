@@ -319,3 +319,12 @@
 
 /obj/item/melee/sickly_blade/training/check_usability(mob/living/user)
 	return TRUE // If you can hold this, you can use it
+
+// Path of Noise's blade
+/obj/item/melee/sickly_blade/noise
+	name = "\improper resonant blade"
+	desc = "A blade that hums with an otherworldly frequency. \
+		Each strike sends vibrations through flesh and bone, disrupting the very essence of its victims."
+	icon_state = "void_blade" // placeholder
+	inhand_icon_state = "void_blade" // placeholder
+	after_use_message = "The Resonance hears your call..."

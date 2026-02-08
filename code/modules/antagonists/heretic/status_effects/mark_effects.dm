@@ -296,3 +296,18 @@
 
 	// In case the trait was not removed earlier
 	REMOVE_TRAIT(owner, TRAIT_PACIFISM, TRAIT_STATUS_EFFECT(id))
+
+// MARK OF NOISE
+
+/datum/status_effect/eldritch/noise
+	effect_icon_state = "emark1" // placeholder
+
+/datum/status_effect/eldritch/noise/on_effect()
+	owner.adjust_confusion(6 SECONDS)
+	owner.set_jitter_if_lower(20 SECONDS)
+	owner.adjust_organ_loss(ORGAN_SLOT_EARS, 5)
+	var/obj/item/organ/ears/ears = owner.get_organ_slot(ORGAN_SLOT_EARS)
+	if(ears)
+		ears.adjust_temporary_deafness(10 SECONDS)
+	playsound(owner, 'sound/effects/screech.ogg', 50, TRUE)
+	return ..()

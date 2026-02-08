@@ -585,3 +585,41 @@
 #undef HERETIC_LEVEL_START
 #undef HERETIC_LEVEL_UPGRADE
 #undef HERETIC_LEVEL_FINAL
+
+// Path of Noise passive
+/datum/status_effect/heretic_passive/noise
+	name = "Vow of Resonance"
+	passive_descriptions = list(
+		"Your ears are protected from damage and you cannot be deafened.",
+		"You gain increased resistance to sonic-based attacks.",
+		"Your footsteps make no sound.",
+	)
+
+/datum/status_effect/heretic_passive/noise/on_apply()
+	. = ..()
+	var/obj/item/organ/ears/our_ears = owner.get_organ_slot(ORGAN_SLOT_EARS)
+	if(our_ears)
+		ADD_TRAIT(our_ears, TRAIT_BRAIN_TRAUMA_IMMUNITY, REF(src)) // Prevents ear trauma
+	RegisterSignal(owner, COMSIG_LIVING_LIFE, PROC_REF(on_life))
+
+/datum/status_effect/heretic_passive/noise/proc/on_life(mob/living/source, seconds_per_tick)
+	SIGNAL_HANDLER
+	// Gradually heal ear damage
+	var/delta_time = DELTA_WORLD_TIME(SSmobs) * 0.5
+	owner.adjust_organ_loss(ORGAN_SLOT_EARS, -2 * delta_time)
+
+/datum/status_effect/heretic_passive/noise/heretic_level_upgrade()
+	. = ..()
+	// Sonic resistance implemented via reduced ear damage in on_life
+
+/datum/status_effect/heretic_passive/noise/heretic_level_final()
+	. = ..()
+	ADD_TRAIT(owner, TRAIT_SILENT_FOOTSTEPS, REF(src))
+
+/datum/status_effect/heretic_passive/noise/on_remove()
+	UnregisterSignal(owner, COMSIG_LIVING_LIFE)
+	var/obj/item/organ/ears/our_ears = owner.get_organ_slot(ORGAN_SLOT_EARS)
+	if(our_ears)
+		REMOVE_TRAIT(our_ears, TRAIT_BRAIN_TRAUMA_IMMUNITY, REF(src))
+	REMOVE_TRAIT(owner, TRAIT_SILENT_FOOTSTEPS, REF(src))
+	return ..()

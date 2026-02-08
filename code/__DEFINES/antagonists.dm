@@ -96,6 +96,7 @@
 #define PATH_COSMIC "Cosmic Path"
 #define PATH_LOCK "Lock Path"
 #define PATH_MOON "Moon Path"
+#define PATH_NOISE "Noise Path"
 
 //Heretic knowledge tree defines
 #define HKT_NEXT "next"

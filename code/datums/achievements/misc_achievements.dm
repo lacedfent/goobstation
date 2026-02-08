@@ -257,3 +257,9 @@
 		Perhaps one day you'll find peace. But not today."
 	database_id = MEDAL_DESENSITIZED
 	icon_state = "desensitized"
+
+/datum/award/achievement/misc/noise_ascension
+	name = "Resonant Frequency"
+	desc = "You've become one with sound itself, a living frequency that reality cannot silence."
+	database_id = MEDAL_NOISE_ASCENSION
+	icon_state = "ascension"

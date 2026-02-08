@@ -1207,3 +1207,44 @@
 		loc.add_traits(list(TRAIT_RESISTLOWPRESSURE, TRAIT_RESISTCOLD), REF(src))
 		loc.balloon_alert(loc, "cloak revealed")
 		loc.visible_message(span_notice("A kaleidoscope of colours collapses around [loc], a cloak appearing suddenly around their person!"))
+
+// Noise
+/obj/item/clothing/suit/hooded/cultrobes/eldritch/noise
+	name = "\improper Silencer Mantle"
+	desc = "A mantle woven from sound-dampening materials and eldritch energies. \
+		It muffles all sound around the wearer, allowing them to move in complete silence."
+	icon_state = "void_armor" // placeholder
+	inhand_icon_state = "void_armor" // placeholder
+	hoodtype = /obj/item/clothing/head/hooded/culthood/eldritch/noise
+	armor_type = /datum/armor/armor_eldritch_noise
+	cold_protection = CHEST|GROIN|LEGS|ARMS
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
+
+/datum/armor/armor_eldritch_noise
+	melee = 50
+	bullet = 50
+	laser = 50
+	energy = 50
+	bomb = 25
+	bio = 20
+	fire = 50
+	acid = 50
+	wound = 20
+
+/obj/item/clothing/suit/hooded/cultrobes/eldritch/noise/on_robes_gained(mob/living/user)
+	. = ..()
+	ADD_TRAIT(user, TRAIT_SILENT_FOOTSTEPS, REF(src))
+
+/obj/item/clothing/suit/hooded/cultrobes/eldritch/noise/on_robes_lost(mob/living/user)
+	. = ..()
+	REMOVE_TRAIT(user, TRAIT_SILENT_FOOTSTEPS, REF(src))
+
+/obj/item/clothing/head/hooded/culthood/eldritch/noise
+	name = "\improper Silencer Hood"
+	desc = "A hood that seems to absorb all sound around it."
+	icon_state = "void_hood" // placeholder
+	inhand_icon_state = "void_hood" // placeholder
+	armor_type = /datum/armor/armor_eldritch_noise
+	cold_protection = HEAD
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
