@@ -1,8 +1,15 @@
 /datum/heretic_knowledge_tree_column/noise
 	route = PATH_NOISE
-	ui_bgr = "node_void" // placeholder
+	ui_bgr = "node_void" // using void node as placeholder
 	complexity = "Medium"
 	complexity_color = COLOR_YELLOW
+	icon = list(
+		"icon" = 'icons/obj/weapons/khopesh.dmi',
+		"state" = "void_blade", // using void blade as placeholder
+		"frame" = 1,
+		"dir" = SOUTH,
+		"moving" = FALSE,
+	)
 	icon = list(
 		"icon" = 'icons/obj/weapons/khopesh.dmi',
 		"state" = "void_blade", // placeholder
