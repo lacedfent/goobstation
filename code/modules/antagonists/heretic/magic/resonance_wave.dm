@@ -8,13 +8,13 @@
 	sound = 'sound/effects/explosion/explosion_distant.ogg'
 
 	school = SCHOOL_FORBIDDEN
-	cooldown_time = 30 SECONDS
+	cooldown_time = 25 SECONDS
 
 	invocation = "R'SON'TE!"
 	invocation_type = INVOCATION_WHISPER
 	spell_requirements = NONE
 
-	cast_range = 7
+	cast_range = 9
 
 /datum/action/cooldown/spell/pointed/resonance_wave/is_valid_target(atom/cast_on)
 	return TRUE
@@ -39,8 +39,10 @@
 			if(IS_HERETIC_OR_MONSTER(victim))
 				continue
 
-			victim.apply_damage(15, BRUTE)
-			victim.adjust_confusion(4 SECONDS)
+			victim.apply_damage(25, BRUTE, wound_bonus = 5)
+			victim.adjust_confusion(6 SECONDS)
+			victim.adjust_stamina_loss(25)
+			victim.Knockdown(1 SECONDS)
 			to_chat(victim, span_userdanger("Violent vibrations tear through your body!"))
 
 		sleep(0.1 SECONDS)

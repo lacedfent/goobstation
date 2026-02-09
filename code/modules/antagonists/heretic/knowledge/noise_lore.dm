@@ -118,8 +118,9 @@
 	if(source == target || !isliving(target))
 		return
 
-	target.adjust_confusion(2 SECONDS)
-	target.apply_damage(5, BRUTE, wound_bonus = 5, sharpness = SHARP_EDGED, def_zone = BODY_ZONE_CHEST)
+	target.adjust_confusion(3 SECONDS)
+	target.apply_damage(8, BRUTE, wound_bonus = 10, sharpness = SHARP_EDGED, def_zone = BODY_ZONE_CHEST, armor_penetration = 20)
+	target.adjust_stamina_loss(10)
 
 /datum/heretic_knowledge/spell/silence_field
 	name = "Zone of Silence"

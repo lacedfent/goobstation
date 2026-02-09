@@ -8,13 +8,13 @@
 	sound = 'sound/effects/screech.ogg'
 
 	school = SCHOOL_FORBIDDEN
-	cooldown_time = 25 SECONDS
+	cooldown_time = 20 SECONDS
 
 	invocation = "SHR'EK OF S'LENCE!"
 	invocation_type = INVOCATION_SHOUT
 	spell_requirements = NONE
 
-	aoe_radius = 5
+	aoe_radius = 6
 
 /datum/action/cooldown/spell/aoe/deafening_shriek/cast(atom/cast_on)
 	. = ..()
@@ -26,13 +26,15 @@
 		if(IS_HERETIC_OR_MONSTER(nearby_mob))
 			continue
 
-		nearby_mob.adjust_organ_loss(ORGAN_SLOT_EARS, 15)
+		nearby_mob.adjust_organ_loss(ORGAN_SLOT_EARS, 20)
 		var/obj/item/organ/ears/ears = nearby_mob.get_organ_slot(ORGAN_SLOT_EARS)
 		if(ears)
-			ears.adjust_temporary_deafness(30 SECONDS)
-		nearby_mob.adjust_confusion(8 SECONDS)
-		nearby_mob.set_jitter_if_lower(30 SECONDS)
-		nearby_mob.adjust_eye_blur(10 SECONDS)
+			ears.adjust_temporary_deafness(45 SECONDS)
+		nearby_mob.adjust_confusion(12 SECONDS)
+		nearby_mob.set_jitter_if_lower(40 SECONDS)
+		nearby_mob.adjust_eye_blur(15 SECONDS)
+		nearby_mob.adjust_stamina_loss(40)
+		nearby_mob.Knockdown(1.5 SECONDS)
 
 		to_chat(nearby_mob, span_userdanger("An unbearable shriek pierces your ears!"))
 

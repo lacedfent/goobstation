@@ -8,13 +8,13 @@
 	sound = 'sound/effects/explosion/explosion_distant.ogg'
 
 	school = SCHOOL_FORBIDDEN
-	cooldown_time = 20 SECONDS
+	cooldown_time = 15 SECONDS
 
 	invocation = "S'NIC W'VE!"
 	invocation_type = INVOCATION_WHISPER
 	spell_requirements = NONE
 
-	aoe_radius = 3
+	aoe_radius = 4
 
 /datum/action/cooldown/spell/aoe/sonic_pulse/cast(atom/cast_on)
 	. = ..()
@@ -27,10 +27,12 @@
 			continue
 
 		var/distance = get_dist(nearby_mob, cast_on)
-		var/throwpower = max(1, aoe_radius - distance)
+		var/throwpower = max(2, aoe_radius - distance + 1)
 
-		nearby_mob.Knockdown(1 SECONDS)
-		nearby_mob.adjust_confusion(3 SECONDS)
+		nearby_mob.Knockdown(2 SECONDS)
+		nearby_mob.adjust_confusion(5 SECONDS)
+		nearby_mob.apply_damage(10, BRUTE)
+		nearby_mob.adjust_stamina_loss(30)
 
 		var/atom/throw_target = get_edge_target_turf(nearby_mob, get_dir(cast_on, get_step_away(nearby_mob, cast_on)))
 		nearby_mob.throw_at(throw_target, throwpower, throwpower)
